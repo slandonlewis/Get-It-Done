@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300&family=Single+Day&family=Teko&display=swap');
+
+body {
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: 'Single Day', cursive;
+    font-size:x-large;
+}
+
+#title {
+    background-color: blue;
+    color: aliceblue;
+}
+
+#dashboard {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-section {
+    background-color: aliceblue;
+    margin: 5px;
+    padding: 15px;
+    text-align: center;
+}
+
+.list-item {
+    background-color: rgb(160, 186, 255);
+    list-style-type: none;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: slideInFade 0.5s ease forwards;
+}
+
+@keyframes slideInFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li {
+    font-weight: 700;
+}
+
+#view-task {
+    border: none;
+    border-radius: 10%;
+    background-color: grey;
+    color: aliceblue;
+    font-weight: 800;
+}
+
+#view-task:hover {
+    background-color: rgb(31, 31, 31);
+}
+
+#delete-task {
+    border: none;
+    border-radius: 10%;
+    background-color: rgb(212, 0, 0);
+    color: aliceblue;
+    font-weight: 800;
+    margin-right: 5px;
+}
+
+#delete-task:hover {
+    background-color: rgb(80, 0, 0);
+}
+
+#create-task {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(88, 88, 177);
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: larger;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#create-task:hover {
+    background-color: rgb(22, 22, 78);
+}
+
+#delete-all {
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(201, 11, 11);
+    color: aliceblue;
+    font-weight: bolder;
+    font-size: larger;
+    width: 100%;
+}
+
+#delete-all:hover {
+    background-color: rgb(78, 22, 22);
+}
