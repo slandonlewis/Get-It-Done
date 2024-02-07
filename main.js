@@ -18,7 +18,7 @@ fetch(motivationAPI)
 
 // showing list of tasks upon startup
 // if there are no tasks, show a p tag saying "no current tasks...", else list the tasks
-const testListArray = [
+let testListArray = [
     {id: 0, name: "Wash Dishes", description: "Scrub and rinse dirty dishes"},
     {id: 1, name: "Take Out Trash", description: "Empty out all trash cans and throw all bags out"},
     {id: 2, name: "Do Laundry", description: "Wash, dry, and hang clothes"}
@@ -58,3 +58,19 @@ if (numOfTasks === 0) {
         }, index * 100); // Adjust the delay as per your preference
     });
 }
+
+// Clearing the task list, CHANGE LATER ONCE FIREBASE IS IMPLEMENTED
+const clearAll = () => {
+    // ask the user if they are sure about clearing everything
+    let confirmation = window.confirm("Hey there! Sure you wanna clear this list? This CAN NOT be undone!")
+    if (confirmation) {
+        // set the task list array to an empty array, then update the task list on the DOM to show there are no tasks
+        testListArray = [] // For now, this is clearing the test array. Later we will need to clear an actual database list of tasks.
+        listEl.innerHTML = `<p>There are currently no tasks, woohoo!</p>`
+        window.alert("All tasks have been cleared")
+    }
+}
+
+// Clear button event listener
+const clearBtn = document.querySelector('#delete-all')
+clearBtn.addEventListener("click", clearAll)
