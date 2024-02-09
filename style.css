@@ -70,7 +70,7 @@ li {
     background-color: rgb(31, 31, 31);
 }
 
-#delete-task {
+.delete-task {
     border: none;
     border-radius: 10%;
     background-color: rgb(212, 0, 0);
@@ -79,7 +79,7 @@ li {
     margin-right: 5px;
 }
 
-#delete-task:hover {
+.delete-task:hover {
     background-color: rgb(80, 0, 0);
 }
 
