@@ -21,7 +21,8 @@ fetch(motivationAPI)
 let testListArray = [
     {id: 0, name: "Wash Dishes", description: "Scrub and rinse dirty dishes"},
     {id: 1, name: "Take Out Trash", description: "Empty out all trash cans and throw all bags out"},
-    {id: 2, name: "Do Laundry", description: "Wash, dry, and hang clothes"}
+    {id: 2, name: "Do Laundry", description: "Wash, dry, and hang clothes"},
+    {id: 3, name: "Groceries", description: "Pick up eggs, cheese, and milk from the store."}
 ]
 const listEl = document.querySelector('#list')
 const listAllTasks = () => {
@@ -118,3 +119,39 @@ const deleteTaskHandler = (event) => {
 
 // Delete task event listener
 document.addEventListener('click', deleteTaskHandler)
+
+// Search for a task by name or description
+const searchBar = document.querySelector('#search-bar')
+const searchBtn = document.querySelector('#search-btn')
+
+const searchForTask = () => {
+    let searchText = searchBar.value.toLowerCase()
+    let searchResults = []
+    for (let i=0; i < testListArray.length; i++) {
+        let taskName = testListArray[i].name.toLowerCase()
+        let taskDesc = testListArray[i].description.toLowerCase()
+        if (taskName.includes(searchText)) {
+            searchResults.push(testListArray[i])
+        } else if (taskDesc.includes(searchText)) {
+            searchResults.push(testListArray[i])
+        }
+    }
+    // generate HTML for each search result
+    listEl.innerHTML = ''
+    for (let i=0; i < searchResults.length; i++) {
+        listEl.innerHTML += `
+        <div class="list-item">
+            <div>
+                <li>${searchResults[i].name}</li>
+            </div>
+            <div>
+                <button id="view-task">View</button>
+                <button class="delete-task" data-task-id="${searchResults[i].id}">Delete</button>
+            </div>
+        </div>
+        `
+    }
+}
+
+searchBtn.addEventListener('click', searchForTask)
+

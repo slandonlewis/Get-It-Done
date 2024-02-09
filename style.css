@@ -15,7 +15,6 @@ body {
 }
 
 #dashboard {
-    margin-top: 5px;
     padding: 10px;
     background-color: blue;
     display: flex;
@@ -25,7 +24,7 @@ body {
 .dashboard-section {
     background-color: aliceblue;
     margin: 5px;
-    padding: 15px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -110,4 +109,51 @@ li {
 
 #delete-all:hover {
     background-color: rgb(78, 22, 22);
+}
+
+#search-bar {
+    width: 100%;
+    font-size: large;
+    font-family: 'Single Day', cursive;
+    background-color: rgb(159, 159, 255);
+    border-radius: 8px;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: aliceblue;
+}
+
+#search-bar:focus {
+    border: none;
+    background-color: rgb(17, 17, 75);
+}
+
+#search-btn {
+    font-size: large;
+    background-color: rgb(159, 159, 255);
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px;
+}
+
+#search-btn:hover {
+    background-color: rgb(192, 192, 255);
+}
+
+#search-btn:active {
+    background-color: rgb(24, 40, 90);
+}
+
+.search-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+#list {
+    height: 170px;
+    overflow-y: auto;
 }
