@@ -21,7 +21,8 @@ fetch(motivationAPI)
 let testListArray = [
     {id: 0, name: "Wash Dishes", description: "Scrub and rinse dirty dishes"},
     {id: 1, name: "Take Out Trash", description: "Empty out all trash cans and throw all bags out"},
-    {id: 2, name: "Do Laundry", description: "Wash, dry, and hang clothes"}
+    {id: 2, name: "Do Laundry", description: "Wash, dry, and hang clothes"},
+    {id: 3, name: "Groceries", description: "Pick up eggs, cheese, and milk from the store."}
 ]
 const listEl = document.querySelector('#list')
 const listAllTasks = () => {
