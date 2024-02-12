@@ -1,14 +1,17 @@
 // firebase connection
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 const appSettings = {
     databaseURL: "https://get-it-done-19c75-default-rtdb.firebaseio.com/"
 }
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
-const tasksInDatabase = ref(database, "taskListArray")
-let testTask = {id: 3, name: "Push task to database", description: "Test"}
-push(tasksInDatabase, testTask)
+const tasksInDatabase = ref(database, "taskList")
+onValue(tasksInDatabase, function(snapshot) {
+    const data = snapshot.val()
+    let taskListArray = Object.values(data)
+    listAllTasks(taskListArray)
+})
 
 // motivational quote api
 const quoteEl = document.querySelector('#quote')
@@ -30,21 +33,24 @@ fetch(motivationAPI)
 
 // showing list of tasks upon startup
 // if there are no tasks, show a p tag saying "no current tasks...", else list the tasks
-let testListArray = [
-    {id: 0, name: "Wash Dishes", description: "Scrub and rinse dirty dishes"},
-    {id: 1, name: "Take Out Trash", description: "Empty out all trash cans and throw all bags out"},
-    {id: 2, name: "Do Laundry", description: "Wash, dry, and hang clothes"}
-]
+// let testListArray = [
+//     {id: 0, name: "Wash Dishes", description: "Scrub and rinse dirty dishes"},
+//     {id: 1, name: "Take Out Trash", description: "Empty out all trash cans and throw all bags out"},
+//     {id: 2, name: "Do Laundry", description: "Wash, dry, and hang clothes"}
+// ]
+// for (let i=0; i < testListArray.length; i++) {
+//     push(tasksInDatabase, testListArray[i])
+// }
 const listEl = document.querySelector('#list')
-const listAllTasks = () => {
-    let numOfTasks = testListArray.length
+const listAllTasks = (array) => {
+    let numOfTasks = array.length
     if (numOfTasks === 0) {
         listEl.innerHTML = `<p>There are currently no tasks, woohoo!</p>`
     } else {
         let listItemElements = ""
         let listItemIndex = 0
         // change "testListArray" to the actual name of the list once it is created
-        for (const listItem of testListArray) {
+        for (const listItem of array) {
             // add each list-item div
             listItemElements += `
             <div class="list-item" style="animation-delay: ${listItemIndex * 0.1}s">
@@ -72,7 +78,8 @@ const listAllTasks = () => {
         });
     }
 }
-listAllTasks()
+// listAllTasks()
+
 
 // Clearing the task list, CHANGE LATER ONCE FIREBASE IS IMPLEMENTED
 const clearAll = () => {
