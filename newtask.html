@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get It Done - New Task</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="title">
+        <h1>Get It Done✏️</h1>
+        <h3>-Javascript Version-</h3>
+    </div>
+    <div id="dashboard">
+        <form id="task-form">
+            <div>
+                <label for="taskName">Name:</label>
+                <br>
+                <input type="text" id="taskName" name="taskName" required>
+            </div>
+            <div>
+                <label for="taskDescription">Description:</label>
+                <br>
+                <textarea 
+                id="taskDescription"
+                name="taskDescription"
+                rows="4"
+                required></textarea>
+            </div>
+            <div>
+                <button type="submit" id="create-task">CREATE TASK</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="module" src="newtask.js"></script>
+</html>
